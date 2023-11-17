@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zişan Saraç</title>
+    <link rel="stylesheet" href="style.css">
+   
+    
+ 
+    
+</head>
+
+ 
+
+<body>
+<div id="header">
+      <div class="container">
+           <nav>
+              <img src="images/ZİŞAN . (3) (1).png" class="logo"></video>
+              <ul id="sidemenu">
+                 <li><a href="#header">Home</a></li>
+                 <li><a href="#about">About</a></li>
+                 <li><a href="#contact">Contact</a></li>
+                 <i class="fa-solid fa-xmark" style="color: #b5a1bf;" onclick="closemenu()"></i>
+                 
+                </ul>
+              <i class="fa-solid fa-bars" style="color: #b5a1bf;" onclick="openmenu()"></i>
+
+           </nav>
+           <div class="header-text">
+                <p>Computer Engineering Student</p>
+                <h1>Hi, I'm <span>Zişan.</span> Welcome to my page!</h1>
+           </div>
+
+           
+
+      </div>
+
+</div>
+
+  <div id="about">
+    <div class="container">
+      <div class="row">
+      
+        <div class="about-col-2">
+          <h1 class="subtitle">About Me</h1>
+          <p><br> Hi! My name is Zişan Saraç. Currently, I'm studying in my 3rd year in the Computer Engineering department at Suleyman Demirel University in Turkey.
+             I studied preparatory school for a year.
+            I want to be a front-end developer in the future. Although, I need more time to improve myself in this field. </p>
+        
+          <div class="tab-titles">
+             <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+             <p class="tab-links" onclick="opentab('education')">Education</p>
+             <p class="tab-links" onclick="opentab('hobbies')">Hobbies</p>
+          </div>
+
+          <div class="tab-contents active-tab" id="skills">
+               <ul>
+                   <li><span class="web">Web Development</span><br>HTML <br>CSS <br>JS</li>
+                   <li><span class="eng">English</span><br>B2</li>
+                   
+               </ul>
+
+          </div>
+
+          <div class="tab-contents" id="education">
+            <ul>
+                <li><span>2020-2021</span><br>Preparatory year at SDU School of Foreign Languages</li>
+                <li><br><span>2021-2025</span><br>Computer Engineering at SDU </li>
+                
+            </ul>
+
+          </div>
+
+          <div class="tab-contents" id="hobbies">
+            <ul>
+                <li><span>Drawing</span><br><br></li>
+                <li><span>Learning foreign languages</span><br></li>
+                
+            </ul>
+
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div> 
+  
+
+  <script src="https://kit.fontawesome.com/cc68cf6564.js" crossorigin="anonymous"></script>
+ <!--- ------------------contact------------------- -->
+<div id="contact">
+   <div class="container">
+        <div class="row">
+          <div class="contact-left">
+             <h1 class="subtitle">Contact Me</h1>
+             <p><i class="fa-solid fa-paper-plane" style="color: #b5a1bf;"></i>saraczisan02@gmail.com</p>
+             <div class="social-icons">
+                <a href="https://www.linkedin.com/in/zisansarac3023857484a2220/"><i class="fa-brands fa-linkedin-in" style="color: #b5a1bf;"></i></a>
+                <a href="https://github.com/zisansarac"><i class="fa-brands fa-github" style="color: #b5a1bf;"></i></a>
+
+             </div>
+
+
+             
+
+          </div>
+          <div class="contact-right">
+               <form name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required>
+                <input type="email" name="Email" placeholder="Your Email" required>
+                <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                <button type="submit" class="button">Submit</button>
+               </form>
+
+               <span id="msg"></span>
+
+
+
+          </div>
+
+        </div>
+
+
+
+   </div>
+
+   <div class="copyright">
+        <p>Copyright © Zişan Saraç.</p>
+
+   </div>
+
+
+</div>
+
+  
+
+
+
+<script>
+  var tablinks = document.getElementsByClassName("tab-links");
+  var tabcontents= document.getElementsByClassName("tab-contents");
+  function opentab(tabname){
+    for(tablink of tablinks){
+      tablink.classList.remove("active-link");
+    }
+    for(tabcontent of tabcontents){
+      tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab");
+  }
+
+</script>
+<script>
+
+   var sidemenu= document.getElementById("sidemenu");
+   
+   function openmenu(){
+       sidemenu.style.right="0";
+   }
+
+   function closemenu(){
+    sidemenu.style.right="-200px";
+
+   }
+
+</script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxQomBUG_yuepiT1YlVxfvgQBhjZNSl1Y9pNFkRof7EDH8HPw0VMdnxHjCgZzdElqK1VA/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg= document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response =>{
+        msg.innerHTML="Message sent successfully"
+        setTimeout(function(){
+          msg.innerHTML=""
+        },5000)
+        form.reset()
+
+      } )
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+
+
+</body>
+</html>
